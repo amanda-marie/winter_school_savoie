@@ -285,3 +285,40 @@ head(sst_NOAA_test)
 #quick summary
 summary(sst_NOAA_test)
 
+
+#trying to make my own figures with NOAA data
+
+sst_NOAA_test <- sst_NOAA_test
+view(sst_NOAA_test)
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_point(aes(colour = site))
+
+#trying to make a facet grid
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_point(aes(colour = site)) + facet_wrap(~site)
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_point(aes(colour = site)) + facet_wrap(~site, ncol = 1)
+
+#trying to make the time series look better
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_line(aes(colour = site)) + facet_wrap(~site, ncol = 1)
+
+#trying to change the colours
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_line(aes(colour = site)) + facet_wrap(~site, ncol = 1) +
+  scale_colour_viridis_c(option = "D") 
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_line(aes(colour = site)) + facet_wrap(~site, ncol = 1) +
+  # Choose a colour palette
+  scale_colour_brewer(palette = "Set1")
+
+ggplot(data = sst_NOAA_test, aes(x = t, y = temp)) +
+  geom_line(aes(colour = site)) + facet_wrap(~site, ncol = 1) +
+  # Choose a colour palette
+  scale_colour_brewer(palette = "Set2")
